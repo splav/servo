@@ -76,6 +76,7 @@ use dom::htmltrackelement::HTMLTrackElement;
 use dom::htmlulistelement::HTMLUListElement;
 use dom::htmlunknownelement::HTMLUnknownElement;
 use dom::htmlvideoelement::HTMLVideoElement;
+use dom::svgcircleelement::SVGCircleElement;
 use dom::svgsvgelement::SVGSVGElement;
 use string_cache::{Atom, QualName};
 use util::prefs::PREFS;
@@ -102,6 +103,7 @@ fn create_svg_element(name: QualName,
     }
 
     match name.local {
+        atom!("circle")     => make!(SVGCircleElement),
         atom!("svg")        => make!(SVGSVGElement),
         _                   => Element::new(name.local, name.ns, prefix, document),
     }
